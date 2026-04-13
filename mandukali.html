@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>मंडुकली ग्रामपंचायत</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #085041;
+    --green-mid: #1D9E75;
+    --green-light: #E1F5EE;
+    --green-soft: #9FE1CB;
+    --amber: #EF9F27;
+    --amber-light: #FAEEDA;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --white: #ffffff;
+    --bg: #f7faf8;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Mukta', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--green-dark);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+  }
+  .nav-brand {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--green-soft);
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+  }
+  .nav-links a {
+    color: var(--green-soft);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.1); }
+
+  /* HERO */
+  .hero {
+    background: var(--green-mid);
+    padding: 64px 2rem 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #E1F5EE;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .hero p {
+    font-size: 16px;
+    color: #9FE1CB;
+    margin-bottom: 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 12px 22px;
+    color: white;
+    text-align: center;
+  }
+  .hero-stat .val { font-size: 22px; font-weight: 700; }
+  .hero-stat .lbl { font-size: 12px; color: #9FE1CB; margin-top: 2px; }
+
+  /* SECTIONS */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  section { padding: 52px 0; }
+  section:nth-child(even) { background: white; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+
+  /* ITIHAS */
+  .history-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green-mid);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 1.75rem;
+    font-size: 15px;
+    color: #085041;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+  .card h3 { font-size: 15px; font-weight: 600; color: var(--green-dark); margin-bottom: 4px; }
+  .card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* PHOTO GALLERY */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .gallery-item {
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    border: 1px solid var(--border);
+  }
+  .gallery-item:hover { opacity: 0.85; }
+  .gallery-item span { font-size: 28px; }
+  .g1 { background: #EAF3DE; color: #27500A; }
+  .g2 { background: #E1F5EE; color: #085041; }
+  .g3 { background: #FAEEDA; color: #633806; }
+  .g4 { background: #E6F1FB; color: #0C447C; }
+  .g5 { background: #FBEAF0; color: #72243E; }
+  .g6 { background: #EEEDFE; color: #3C3489; }
+  .gallery-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 10px;
+    background: var(--amber-light);
+    border-radius: 8px;
+    color: #633806;
+  }
+
+  /* YOJANA */
+  .yojana-list { display: flex; flex-direction: column; gap: 10px; }
+  .yojana-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .yojana-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--green-mid);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .yojana-item h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .yojana-item p { font-size: 13px; color: var(--text-muted); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .contact-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+  }
+  .contact-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .contact-row .lbl { color: var(--text-muted); width: 80px; flex-shrink: 0; }
+  .contact-row .val { color: var(--text); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-dark);
+    color: var(--green-soft);
+    text-align: center;
+    padding: 28px 1rem;
+    font-size: 13px;
+  }
+  footer .footer-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .nav-links { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 8px; }
+    .hero-stat { padding: 10px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">🌿 मंडुकली ग्रामपंचायत</div>
+  <div class="nav-links">
+    <a href="#itihas">इतिहास</a>
+    <a href="#suvidhaa">सुविधा</a>
+    <a href="#gallery">गॅलरी</a>
+    <a href="#yojana">योजना</a>
+    <a href="#sampark">संपर्क</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">महाराष्ट्र · कोल्हापूर जिल्हा</div>
+  <h1>मंडुकली गावात<br>स्वागत आहे</h1>
+  <p>एक सुंदर, शांत आणि समृद्ध गाव</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="val">~२,५००</div><div class="lbl">लोकसंख्या</div></div>
+    <div class="hero-stat"><div class="val">४५०+</div><div class="lbl">कुटुंबे</div></div>
+    <div class="hero-stat"><div class="val">१८५०</div><div class="lbl">स्थापना वर्ष</div></div>
+    <div class="hero-stat"><div class="val">५ वार्डे</div><div class="lbl">ग्रामपंचायत</div></div>
+  </div>
+</div>
+
+<!-- ITIHAS -->
+<section id="itihas">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <h2>गावाचा इतिहास</h2>
+    </div>
+    <div class="history-box">
+      मंडुकली हे महाराष्ट्रातील कोल्हापूर जिल्ह्यातील एक ऐतिहासिक गाव आहे. या गावाला शेकडो वर्षांची समृद्ध परंपरा आहे. येथील मंदिरे, शेती आणि लोकसंस्कृती गावाची खरी ओळख आहे. गावातील जुनी वास्तुकला आणि सण-उत्सव आजही मोठ्या उत्साहाने साजरे केले जातात.
+    </div>
+    <div class="history-box" style="border-left-color: var(--amber); background: var(--amber-light); color: #633806;">
+      गावात प्राचीन मंदिरे असून दरवर्षी यात्रा-उत्सव मोठ्या प्रमाणात होतो. शेती हा गावाचा मुख्य व्यवसाय असून ऊस, भात आणि भाजीपाला पिके प्रमुख आहेत. गावातील तरुण पिढी शिक्षण आणि विकासात अग्रेसर आहे.
+    </div>
+  </div>
+</section>
+
+<!-- SUVIDHAA -->
+<section id="suvidhaa" style="background: white;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <h2>गावातील सुविधा</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <h3>ग्रामपंचायत कार्यालय</h3>
+        <p>सरकारी दाखले, अर्ज, योजनांची माहिती</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>जिल्हा परिषद शाळा</h3>
+        <p>इयत्ता १ ते ७, मराठी माध्यम</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <h3>प्राथमिक आरोग्य केंद्र</h3>
+        <p>मोफत आरोग्य तपासणी व उपचार</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌾</div>
+        <h3>कृषी सेवा केंद्र</h3>
+        <p>बी-बियाणे, खते, शेती सल्ला</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <h3>पाणीपुरवठा योजना</h3>
+        <p>घरोघरी नळ पाणी उपलब्ध</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>वीज वितरण</h3>
+        <p>२४ तास वीजपुरवठा, सौर ऊर्जा</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <h2>फोटो गॅलरी</h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item g1"><span>🌾</span>शेती</div>
+      <div class="gallery-item g2"><span>⛪</span>मंदिर</div>
+      <div class="gallery-item g3"><span>🎉</span>यात्रा</div>
+      <div class="gallery-item g4"><span>🏫</span>शाळा</div>
+      <div class="gallery-item g5"><span>👨‍👩‍👧</span>ग्रामस्थ</div>
+      <div class="gallery-item g6"><span>🌿</span>निसर्ग</div>
+    </div>
+    <div class="gallery-note">
+      📷 येथे तुमचे स्वतःचे फोटो टाकता येतात — HTML file मध्ये img tag वापरा
+    </div>
+  </div>
+</section>
+
+<!-- YOJANA -->
+<section id="yojana" style="background: white;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <h2>सरकारी योजना</h2>
+    </div>
+    <div class="yojana-list">
+      <div class="yojana-item">
+        <div class="yojana-num">१</div>
+        <div>
+          <h4>प्रधानमंत्री आवास योजना</h4>
+          <p>गरीब कुटुंबांना घर बांधण्यासाठी आर्थिक मदत</p>
+        </div>
+      </div>
+      <div class="yojana-item">
+        <div class="yojana-num">२</div>
+        <div>
+          <h4>महात्मा गांधी राष्ट्रीय रोजगार हमी योजना (MGNREGS)</h4>
+          <p>गावातील मजुरांना वर्षातून १०० दिवस रोजगार हमी</p>
+        </div>
+      </div>
+      <div class="yojana-item">
+        <div class="yojana-num">३</div>
+        <div>
+          <h4>शेतकरी सन्मान निधी</h4>
+          <p>शेतकऱ्यांना दरवर्षी ₹६,००० थेट बँकेत</p>
+        </div>
+      </div>
+      <div class="yojana-item">
+        <div class="yojana-num">४</div>
+        <div>
+          <h4>आयुष्मान भारत योजना</h4>
+          <p>कुटुंबाला वर्षाला ₹५ लाखापर्यंत मोफत उपचार</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPARK -->
+<section id="sampark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <h2>संपर्क माहिती</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>🏛️ ग्रामपंचायत कार्यालय</h3>
+        <div class="contact-row"><span class="lbl">सरपंच</span><span class="val">नाव येथे टाका</span></div>
+        <div class="contact-row"><span class="lbl">ग्रामसेवक</span><span class="val">नाव येथे टाका</span></div>
+        <div class="contact-row"><span class="lbl">फोन</span><span class="val">+91 XXXXX XXXXX</span></div>
+        <div class="contact-row"><span class="lbl">वेळ</span><span class="val">सोम-शनि, सकाळी १०-५</span></div>
+      </div>
+      <div class="contact-card">
+        <h3>📍 पत्ता</h3>
+        <div class="contact-row"><span class="lbl">गाव</span><span class="val">मंडुकली</span></div>
+        <div class="contact-row"><span class="lbl">जिल्हा</span><span class="val">कोल्हापूर</span></div>
+        <div class="contact-row"><span class="lbl">राज्य</span><span class="val">महाराष्ट्र</span></div>
+        <div class="contact-row"><span class="lbl">पिन कोड</span><span class="val">XXXXXX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">🌿 मंडुकली ग्रामपंचायत</div>
+  <p>कोल्हापूर जिल्हा · महाराष्ट्र · भारत</p>
+  <p style="margin-top:8px; font-size:12px; opacity:0.6;">© २०२५ मंडुकली ग्रामपंचायत. सर्व हक्क राखीव.</p>
+</footer>
+
+</body>
+</html>
